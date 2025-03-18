@@ -160,7 +160,7 @@ class IrExportsLine(models.Model):
                     _("Field '%s' does not exist") % one.name
                 )
             num_lines = 0
-            if not isinstance({one.export_id.id}, models.NewId):
+            if one.export_id and not isinstance(one.export_id.id, models.NewId):
                 num_lines = one.search_count(
                     [("export_id", "=", one.export_id.id), ("name", "=", one.name)]
                 )
